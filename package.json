@@ -1,0 +1,27 @@
+{
+  "name": "react-native-project-generator",
+  "version": "0.0.1",
+  "description":
+    "React Native project generator with some default configurations",
+  "main": "index.js",
+  "bin": {
+    "magnet-rn-project-generate": "./index.js"
+  },
+  "scripts": {
+    "prettier": "prettier index.js generator/**/* --write"
+  },
+  "repository": "git@github.com:magnet-cl/react-native-project-generator.git",
+  "author": "Pedro Pablo Aste Kompen <wachunei@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "colors": "^1.1.2",
+    "dedent": "^0.7.0",
+    "inquirer": "^5.1.0",
+    "semver": "^5.5.0",
+    "shelljs": "^0.8.1"
+  },
+  "devDependencies": {
+    "prettier": "1.10.2"
+  }
+}
