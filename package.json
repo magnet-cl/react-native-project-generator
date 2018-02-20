@@ -1,8 +1,7 @@
 {
   "name": "react-native-project-generator",
   "version": "0.0.1",
-  "description":
-    "React Native project generator with some default configurations",
+  "description": "React Native project generator with some default configurations",
   "main": "index.js",
   "bin": {
     "magnet-rn-project-generate": "./index.js"
@@ -18,6 +17,7 @@
     "colors": "^1.1.2",
     "dedent": "^0.7.0",
     "inquirer": "^5.1.0",
+    "replace-in-file": "^3.1.1",
     "semver": "^5.5.0",
     "shelljs": "^0.8.1"
   },

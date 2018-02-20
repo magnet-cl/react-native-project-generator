@@ -7,7 +7,7 @@ const sh = require('shelljs');
 module.exports = () => {
   sh.echo(
     dedent`\n
-    CHECKING DEPENCENCIES
+    CHECKING DEPENDENCIES
     =====================
     \n
     `.white,
