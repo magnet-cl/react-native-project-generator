@@ -14,17 +14,22 @@ class SplashScreen extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { getCurrent } = this.props;
-    const { completed } = this.state;
+  componentDidUpdate(prevProps, prevState) {
+    const { getCurrent, bootstraped, hasAuthToken } = this.props;
+    const { completed, error } = this.state;
 
-    if (completed) {
+    if (
+      completed ||
+      error ||
+      (prevProps.bootstraped === bootstraped &&
+        prevProps.hasAuthToken === hasAuthToken)
+    ) {
       return;
     }
 
-    if (nextProps.bootstraped && nextProps.hasAuthToken) {
+    if (bootstraped && hasAuthToken) {
       this.beginAnimation();
-    } else if (nextProps.bootstraped) {
+    } else if (bootstraped) {
       getCurrent().catch(() => this.setState({ error: true }));
     }
   }
