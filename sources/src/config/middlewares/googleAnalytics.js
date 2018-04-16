@@ -28,7 +28,6 @@ const screenTracking = ({ getState }) => next => action => {
   const nextScreen = getCurrentRouteName(getState().navigation);
   if (nextScreen !== currentScreen) {
     tracker.trackScreenView(nextScreen);
-    console.log(`tracking ${nextScreen}`);
   }
   return result;
 };
