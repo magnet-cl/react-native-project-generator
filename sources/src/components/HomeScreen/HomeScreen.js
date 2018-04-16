@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, Button } from 'react-native';
 import { navigationPropTypesShape } from '../../navigation';
+import Debug from '../Debug';
 
 class HomeScreen extends Component {
   render() {
@@ -37,10 +38,7 @@ class HomeScreen extends Component {
             <Button onPress={signOut} title="Log Out" />
           </Fragment>
         )}
-        <Button
-          onPress={() => navigation.navigate('EnvVars')}
-          title="Env. Variables"
-        />
+        <Debug />
       </View>
     );
   }
