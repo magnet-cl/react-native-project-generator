@@ -7,6 +7,7 @@ import {
   SERVICE_PORT,
   APPLE_STORE_ID,
   PLAY_STORE_ID,
+  GA_TRACKING_ID,
 } from 'react-native-dotenv';
 
 const EnvVarsScreen = () => (
@@ -34,6 +35,10 @@ const EnvVarsScreen = () => (
     <Text>
       <Text>PLAY_STORE_ID:</Text>
       <Text> {PLAY_STORE_ID}</Text>
+    </Text>
+    <Text>
+      <Text>GA_TRACKING_ID:</Text>
+      <Text> {GA_TRACKING_ID}</Text>
     </Text>
   </View>
 );

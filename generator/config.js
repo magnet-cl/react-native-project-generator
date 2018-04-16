@@ -5,6 +5,7 @@ module.exports = {
     { name: 'lodash' },
     { name: 'react-native-app-link' },
     { name: 'react-native-dotenv' },
+    { name: 'react-native-google-analytics-bridge' },
     { name: 'react-native-keyboard-spacer' },
     { name: 'react-native-modal' },
     { name: 'react-native-vector-icons' },
