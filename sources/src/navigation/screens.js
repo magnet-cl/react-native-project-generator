@@ -9,6 +9,7 @@ import HomeScreen from '../components/HomeScreen';
 import SignInScreen from '../components/SignInScreen';
 import SignUpScreen from '../components/SignUpScreen';
 import NeedUpdateScreen from '../components/NeedUpdateScreen';
+import EnvVarsScreen from '../components/EnvVarsScreen';
 
 const SessionTabs = TabNavigator(
   {
@@ -46,6 +47,9 @@ const AppNavigator = StackNavigator(
     },
     NeedUpdate: {
       screen: NeedUpdateScreen,
+    },
+    EnvVars: {
+      screen: EnvVarsScreen,
     },
   },
   {

@@ -37,6 +37,10 @@ class HomeScreen extends Component {
             <Button onPress={signOut} title="Log Out" />
           </Fragment>
         )}
+        <Button
+          onPress={() => navigation.navigate('EnvVars')}
+          title="Env. Variables"
+        />
       </View>
     );
   }
