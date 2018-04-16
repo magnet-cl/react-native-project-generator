@@ -1,3 +1,4 @@
+const { OK } = require('./config');
 const colors = require('colors');
 const dedent = require('dedent');
 const path = require('path');
@@ -15,8 +16,17 @@ module.exports = async () => {
     ------------------------------
     `.white,
   );
+
   await dependencies();
   const appName = await reactNativeInit();
-  console.log(appName);
-  packages(appName);
+  await packages(appName);
+
+  sh.echo(
+    dedent`\n
+    ${OK} React Native Project Generator has finished.
+
+    You can now run
+    cd ${appName} && react-native run-ios
+    `.green,
+  );
 };
