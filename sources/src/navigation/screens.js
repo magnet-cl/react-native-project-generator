@@ -8,6 +8,7 @@ import {
 import HomeScreen from '../components/HomeScreen';
 import SignInScreen from '../components/SignInScreen';
 import SignUpScreen from '../components/SignUpScreen';
+import NeedUpdateScreen from '../components/NeedUpdateScreen';
 
 const SessionTabs = TabNavigator(
   {
@@ -42,6 +43,9 @@ const AppNavigator = StackNavigator(
       navigationOptions: {
         gesturesEnabled: false,
       },
+    },
+    NeedUpdate: {
+      screen: NeedUpdateScreen,
     },
   },
   {
