@@ -1,24 +1,64 @@
-const { PACKAGES } = require('./config');
+const { OK, PACKAGES } = require('./config');
+const childProcess = require('child_process');
 const dedent = require('dedent');
 const path = require('path');
+const replace = require('replace-in-file');
 const sh = require('shelljs');
 
 module.exports = appName => {
   sh.echo(
     dedent`\n
-    CUSTOM DEPENCENCIES
-    =====================
+    CUSTOM DEPENDENCIES
+    ===================
     \n
     `.white,
   );
 
-  const projectFolder = path.join(sh.pwd().toString(), appName);
+  const projectDirectory = path.join(sh.pwd().toString(), appName);
+  const sourcesDirectory = path.join(__dirname, '../sources/');
 
-  sh.cd(projectFolder);
+  const srcDirectory = path.join(sourcesDirectory, 'src/*');
+  const srcRootDirectory = path.join(sourcesDirectory, 'rootfiles/*');
+  const srcDotFilesDirectory = path.join(sourcesDirectory, 'dotfiles/');
+
+  const destinationSrc = path.join(projectDirectory, '/src/');
+  const destinationIndexFile = path.join(projectDirectory, 'index.js');
+
+  sh.cd(projectDirectory);
+  sh.mkdir('src');
 
   const packagesString = PACKAGES.map(
     pkg => `${pkg.name}${pkg.version ? `@${pkg.version}` : ''}`,
   ).join(' ');
-  sh.echo(`${packagesString}`);
+
   sh.exec(`yarn add ${packagesString}`);
+
+  sh.echo(`${OK} custom dependencies succesfully installed`.green);
+
+  sh.cp(srcRootDirectory, projectDirectory);
+  sh.cp('-R', srcDirectory, destinationSrc);
+
+  sh.ls(`${srcDotFilesDirectory}/*`).forEach(function(file) {
+    sh.cp(file, path.join(projectDirectory, `./.${path.basename(file)}`));
+  });
+
+  const changes = replace.sync({
+    files: destinationIndexFile,
+    from: `import App from './App';`,
+    to: `import App from './src/App';`,
+  });
+
+  sh.echo(`${OK} custom sources succesfully copied`.green);
+
+  try {
+    childProcess.execFileSync('react-native', ['link'], {
+      stdio: 'inherit',
+    });
+  } catch (error) {
+    console.error(error);
+    sh.echo(`react-native link exited with error, check them above.`.red);
+    sh.exit(1);
+  }
+
+  sh.echo(`${OK} native packages linked`.green);
 };
