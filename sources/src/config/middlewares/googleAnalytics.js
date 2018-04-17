@@ -16,6 +16,10 @@ function getCurrentRouteName(navigationState) {
 }
 
 const screenTracking = ({ getState }) => next => action => {
+  if (!GA_TRACKING_ID) {
+    return next(action);
+  }
+
   if (
     action.type !== NavigationActions.NAVIGATE &&
     action.type !== NavigationActions.BACK

@@ -8,6 +8,7 @@ import {
   APPLE_STORE_ID,
   PLAY_STORE_ID,
   GA_TRACKING_ID,
+  SENTRY_CONFIG,
 } from 'react-native-dotenv';
 
 const EnvVarsScreen = () => (
@@ -39,6 +40,10 @@ const EnvVarsScreen = () => (
     <Text>
       <Text>GA_TRACKING_ID:</Text>
       <Text> {GA_TRACKING_ID}</Text>
+    </Text>
+    <Text>
+      <Text>SENTRY_CONFIG:</Text>
+      <Text> {SENTRY_CONFIG}</Text>
     </Text>
   </View>
 );

@@ -8,6 +8,7 @@ module.exports = {
     { name: 'react-native-google-analytics-bridge' },
     { name: 'react-native-keyboard-spacer' },
     { name: 'react-native-modal' },
+    { name: 'react-native-sentry' },
     { name: 'react-native-vector-icons' },
     { name: 'react-navigation-redux-helpers' },
     { name: 'react-navigation' },

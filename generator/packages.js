@@ -42,6 +42,12 @@ module.exports = appName => {
     sh.cp(file, path.join(projectDirectory, `./.${path.basename(file)}`));
   });
 
+  sh.exec(dedent`
+    echo "
+    # Sentry
+    sentry.properties" >> ${path.join(projectDirectory, `./.gitignore`)}
+  `);
+
   const changes = replace.sync({
     files: destinationIndexFile,
     from: `import App from './App';`,
@@ -61,4 +67,12 @@ module.exports = appName => {
   }
 
   sh.echo(`${OK} native packages linked`.green);
+
+  sh.echo(`Further action required`.bgYellow.black);
+
+  sh.echo(
+    dedent`
+    • Backup (ios|android)/sentry.properties files
+    • Copy Sentry config string from App.js to .env files`.yellow,
+  );
 };
